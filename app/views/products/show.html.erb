@@ -1,0 +1,15 @@
+#encoding: utf-8
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Título:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Descrição:</strong>
+  <%= @product.description %>
+</p>
+
+<%= link_to 'Editar', edit_product_path(@product) %> |
+<%= link_to 'Voltar', products_path %>

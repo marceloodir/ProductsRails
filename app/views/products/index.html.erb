@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lista de Produtos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descrição</th>
+      <th>Categorias</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr class="<%= cycle('list_line_even','list_line_odd') %>" >
+        <td><%= product.title %></td>
+        <td class="list_description "><%= product.description %></td>
+        <td>
+          <% product.categories.each do |c|%>
+          <li><%=c.title%></li>
+          <% end %>
+        </td>
+        <td class="list_actions">
+          <%= link_to 'Mostrar', product %><br>
+          <%= link_to 'Editar', edit_product_path(product) %><br>
+          <%= link_to 'Apagar', product, method: :delete, data: { confirm: 'Você tem certeza?' } %><br>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Produto', new_product_path %>
